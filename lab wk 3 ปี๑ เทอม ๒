@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+	int id,score;
+	struct node *next;
+}NODE;
+
+void main()
+{
+
+ NODE* head=NULL;
+ struct node *t;
+ int i,x,sc,tt=0,r;
+ float ave;
+ 
+ do{ 
+      printf("ID : "); scanf("%d",&x);
+ if(x>0) { r=1;
+   if(!head){
+	head=(NODE*)malloc(sizeof(NODE));
+	head->id=x;
+	t=head;
+ }
+ else{
+	t->next =(NODE*)malloc(sizeof(NODE));
+	t=t->next;
+	t->id=x;
+ }
+r++;
+printf("Score : "); scanf("%d",&sc);
+t->score=sc;
+tt+=sc;
+t->next=NULL;
+}
+}
+
+while(x!=0);
+	for(t=head;t->next!=NULL;t=t->next){
+       printf("%d,%d\t",t->id,t->score);  
+}
+
+   ave=(float)tt/r;
+   printf("%d,%d\n",t->id,t->score);
+   printf("Average Score :%d %d %.2f",tt,r,(float)tt/r);
+while(1)
+{   t=head->next;
+    free(head);
+    head=t;
+    if(head==NULL) break;
+}
+
+}
